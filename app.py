@@ -1,26 +1,21 @@
 from flask import Flask, render_template, request, jsonify
 import random
 import json
-import openai
 import os
+import openai
 
 app = Flask(__name__)
 
+from dotenv import load_dotenv  # Import dotenv
 
-current_dir = os.getcwd()  # Gets the current working directory (folder2)
-openai_txt_path = os.path.join(current_dir, '..', 'openai.txt')  # Goes up one level to parent directory
+# Load environment variables from .env file
+load_dotenv()
 
-def get_openai_key():
-    try:
-        with open(openai_txt_path, 'r') as file:
-            for line in file:
-                if line.startswith('OPENAI_API_KEY='):
-                    return line.split('=')[1].strip()
-    except FileNotFoundError:
-        return None
+# Get OpenAI API key from environment variable
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-        
-openai.api_key = get_openai_key() or os.getenv("OPENAI_API_KEY")
+if not openai.api_key:
+    raise ValueError("Missing OpenAI API Key! Make sure it's set in the .env file.")
 
 
 # Load quotes data

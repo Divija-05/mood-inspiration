@@ -36,5 +36,3 @@ Thumbs.db
 #word doc
 documentation.docx
 
-# OpenAI API key (never commit this!)
-openai.txt
