@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood-Based Inspiration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mood-Based Inspiration Generator</h1>
+        <form method="POST">
+            <label for="mood">Select your mood:</label>
+            <select name="mood" id="mood">
+                {% for mood in moods %}
+                <option value="{{ mood }}">{{ mood }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Get Inspiration</button>
+        </form>
+
+        {% if quote %}
+        <div class="quote-box">
+            <h2>{{ mood }}</h2>
+            <p>"{{ quote }}"</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
