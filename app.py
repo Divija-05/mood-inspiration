@@ -6,14 +6,19 @@ import os
 
 app = Flask(__name__)
 
+
+current_dir = os.getcwd()  # Gets the current working directory (folder2)
+openai_txt_path = os.path.join(current_dir, '..', 'openai.txt')  # Goes up one level to parent directory
+
 def get_openai_key():
     try:
-        with open('openai.txt', 'r') as file:
+        with open(openai_txt_path, 'r') as file:
             for line in file:
                 if line.startswith('OPENAI_API_KEY='):
                     return line.split('=')[1].strip()
     except FileNotFoundError:
         return None
+
         
 openai.api_key = get_openai_key() or os.getenv("OPENAI_API_KEY")
 
