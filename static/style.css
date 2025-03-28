@@ -1,0 +1,676 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    min-height: 100vh;
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+/* Sections */
+.section {
+    display: none;
+    text-align: center;
+}
+
+.section.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.section p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.primary-btn {
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    color: #333;
+    box-shadow: 0 4px 15px rgba(246, 211, 101, 0.4);
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(246, 211, 101, 0.6);
+}
+
+.secondary-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.secondary-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Button click effect */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Forms */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Questionnaire */
+.question {
+    margin-bottom: 2rem;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rating input[type="radio"]:checked + label {
+    background-color: #f6d365;
+    color: #333;
+    transform: scale(1.05);
+}
+
+.rating label:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.02);
+}
+
+.disclaimer {
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Results Layout */
+.results-container {
+    padding: 2rem;
+    max-width: 1400px;
+}
+
+.results-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.results-section {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.results-layout {
+    display: flex;
+    gap: 2rem;
+}
+
+.results-left-column {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.section-1 {
+    animation: fadeInDown 0.8s ease forwards;
+}
+
+.section-2 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInLeft 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    height: 300px;
+}
+
+.section-3 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInLeft 0.8s ease forwards;
+    animation-delay: 0.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    height: 300px;
+}
+
+.section-4 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInRight 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+    height: 650px;
+}
+
+/* User Greeting */
+.user-greeting {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.user-greeting h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Mood Summary Styles */
+.mood-summary {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.mood-summary-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    color: #f6d365;
+}
+
+.mood-summary-short {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #f6d365 0%, #fda085 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mood-summary-detailed {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Mood Stats Section */
+.mood-stats {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mood-stats h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.4rem;
+}
+
+#mood-bars {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.mood-bar-container {
+    margin-bottom: 0.5rem;
+    animation: fadeInRight 0.5s ease forwards;
+    opacity: 0;
+}
+
+.mood-bar-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.mood-bar-outer {
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mood-bar-inner {
+    height: 100%;
+    width: 0;
+    border-radius: 8px;
+    transition: width 1s ease-out;
+}
+
+/* Quote Container */
+.quote-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quote-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    animation: fadeInScale 0.8s ease-out;
+}
+
+.quote-text {
+    font-size: 1.6rem;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.quote-author {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    align-self: flex-end;
+}
+
+/* Activities Section */
+.activities-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.activities-section h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.activities-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    flex: 1;
+}
+
+.activity-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.activities-container .activity-card:nth-child(1) {
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: 0.1s;
+}
+
+.activities-container .activity-card:nth-child(2) {
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: 0.2s;
+}
+
+.activities-container .activity-card:nth-child(3) {
+    animation: fadeInUp 0.5s ease backwards;
+    animation-delay: 0.3s;
+}
+
+.activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.activity-card h4 {
+    margin-bottom: 0.5rem;
+    color: #f6d365;
+    font-size: 1.05rem;
+}
+
+.activity-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+ 
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Transitions */
+.transition-fade {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.is-entering {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+.is-exiting {
+    animation: fadeOutDown 0.5s ease forwards;
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+/* Pulse animation for rating selection */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+        background-color: #fda085;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.pulse-animation {
+    animation: pulse 0.5s ease;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .results-layout {
+        flex-direction: column;
+    }
+    
+    .section-4 {
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .results-container {
+        padding: 1rem;
+    }
+    
+    .results-layout {
+        gap: 1rem;
+    }
+    
+    .results-left-column {
+        gap: 1rem;
+    }
+    
+    .app-title {
+        font-size: 2rem;
+    }
+    
+    .section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .quote-text {
+        font-size: 1.3rem;
+    }
+    
+    .section-2, .section-3 {
+        height: auto;
+        min-height: 200px;
+    }
+    
+    .mood-summary-short {
+        font-size: 1.5rem;
+    }
+    
+    .mood-summary-detailed {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .app-title {
+        font-size: 1.8rem;
+    }
+    
+    .section h2 {
+        font-size: 1.3rem;
+    }
+    
+    .quote-text {
+        font-size: 1.1rem;
+    }
+    
+    .rating {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .rating label {
+        width: 80px;
+        height: 35px;
+    }
+    
+    .results-section {
+        padding: 1rem;
+    }
+}
+.restart {
+    margin-top: 1.5rem;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restart .secondary-btn {
+    margin: 0 auto;
+}
+
