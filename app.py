@@ -1,6 +1,3 @@
-
-# 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
-
 from flask import Flask, render_template, request, jsonify
 import random
 import json
