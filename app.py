@@ -224,5 +224,7 @@ def generate_mood_summary(sorted_moods, name):
             "detailed_summary": f"Your responses indicate that you're experiencing {sorted_moods[0][0]} as your primary emotion right now."
         }
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+
