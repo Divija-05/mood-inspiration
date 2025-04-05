@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Mood Analyser | Mood Analyser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container results-container">
+        <header>
+            <h1 class="app-title">Mood Analyser</h1>
+            <p class="app-subtitle">Your personalized mood insights</p>
+        </header>
+        
+        <main class="results-main">
+            <!-- Section 1: User greeting and mood summary -->
+            <div class="results-section section-1">
+                <div class="user-greeting">
+                    <h2>Hello, {{ name }}!</h2>
+                    <p>Here's your mood analysis and personalized inspiration.</p>
+                </div>
+                
+                <div class="mood-summary">
+                    <h3 class="mood-summary-title">Your Mood in a Nutshell</h3>
+                    <p class="mood-summary-short">{{ mood_description.short_summary }}</p>
+                    <p class="mood-summary-detailed">{{ mood_description.detailed_summary }}</p>
+                </div>
+            </div>
+            
+            <div class="results-layout">
+                <div class="results-left-column">
+                    <!-- Section 2: Quote -->
+                    <div class="results-section section-2">
+                        <div class="quote-container">
+                            <div class="quote-box">
+                                <p class="quote-text">"{{ quote.text }}"</p>
+                                <p class="quote-author">— {{ quote.author }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Section 3: Activities -->
+                    <div class="results-section section-3">
+                        <div class="activities-section">
+                            <h3>Things You Could Try Today</h3>
+                            <div class="activities-container">
+                                {% for activity in activities %}
+                                <div class="activity-card">
+                                    <h4>{{ activity.title }}</h4>
+                                    <p>{{ activity.description }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="restart">
+                            <a href="/" class="btn secondary-btn">Start Over</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Section 4: Mood bars -->
+                <div class="results-section section-4">
+                    <div class="mood-stats">
+                        <h3>Your Mood Profile</h3>
+                        <div id="mood-bars"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // Create mood visualizations with animation
+        const moodData = {
+            {% for mood, score in mood_scores.items() %}
+            "{{ mood }}": {{ score }},
+            {% endfor %}
+        };
+        
+        // Convert to array and sort by score (already sorted from backend)
+        const moodEntries = Object.entries(moodData);
+        
+        // Initialize visualizations when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createMoodBars(moodEntries);
+            animateMoodSummary();
+        });
+        
+        // Create mood bars
+        function createMoodBars(moodEntries) {
+            const barsContainer = document.getElementById('mood-bars');
+            const topMoods = moodEntries.slice(0, 10); // Limit to top 10 emotions
+            
+            topMoods.forEach(([mood, score], index) => {
+                const barContainer = document.createElement('div');
+                barContainer.className = 'mood-bar-container';
+                barContainer.style.animationDelay = (index * 0.1) + 's';
+                
+                const labelDiv = document.createElement('div');
+                labelDiv.className = 'mood-bar-label';
+                
+                const nameSpan = document.createElement('span');
+                nameSpan.textContent = mood.charAt(0).toUpperCase() + mood.slice(1);
+                
+                const valueSpan = document.createElement('span');
+                valueSpan.textContent = Math.round(score) + '%';
+                
+                labelDiv.appendChild(nameSpan);
+                labelDiv.appendChild(valueSpan);
+                
+                const barOuter = document.createElement('div');
+                barOuter.className = 'mood-bar-outer';
+                
+                const barInner = document.createElement('div');
+                barInner.className = 'mood-bar-inner';
+                barInner.style.backgroundColor = getMoodColor(mood);
+                
+                barOuter.appendChild(barInner);
+                barContainer.appendChild(labelDiv);
+                barContainer.appendChild(barOuter);
+                barsContainer.appendChild(barContainer);
+                
+                // Animate the bar width after a delay
+                setTimeout(() => {
+                    barInner.style.width = score + '%';
+                }, 100 * index);
+            });
+        }
+        
+        // Animate the mood summary
+        function animateMoodSummary() {
+            const summaryTitle = document.querySelector('.mood-summary-title');
+            const summaryShort = document.querySelector('.mood-summary-short');
+            const summaryDetailed = document.querySelector('.mood-summary-detailed');
+            
+            // Set initial state
+            summaryTitle.style.opacity = '0';
+            summaryTitle.style.transform = 'translateY(20px)';
+            summaryShort.style.opacity = '0';
+            summaryShort.style.transform = 'translateY(20px)';
+            summaryDetailed.style.opacity = '0';
+            summaryDetailed.style.transform = 'translateY(20px)';
+            
+            // Animate elements with delay
+            setTimeout(() => {
+                summaryTitle.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                summaryTitle.style.opacity = '1';
+                summaryTitle.style.transform = 'translateY(0)';
+                
+                setTimeout(() => {
+                    summaryShort.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    summaryShort.style.opacity = '1';
+                    summaryShort.style.transform = 'translateY(0)';
+                    
+                    setTimeout(() => {
+                        summaryDetailed.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        summaryDetailed.style.opacity = '1';
+                        summaryDetailed.style.transform = 'translateY(0)';
+                    }, 300);
+                }, 300);
+            }, 300);
+        }
+        
+        function getMoodColor(mood) {
+            const colors = {
+                'Joy': '#FFD700',
+                'joy': '#FFD700',
+                'Trust': '#4CAF50',
+                'trust': '#4CAF50',
+                'Fear': '#9C27B0',
+                'fear': '#9C27B0',
+                'Surprise': '#00BCD4',
+                'surprise': '#00BCD4',
+                'Sadness': '#2196F3',
+                'sadness': '#2196F3',
+                'Disgust': '#795548',
+                'disgust': '#795548',
+                'Anger': '#F44336',
+                'anger': '#F44336',
+                'Anticipation': '#FF9800',
+                'anticipation': '#FF9800',
+                'Love': '#E91E63',
+                'love': '#E91E63',
+                'Optimism': '#CDDC39',
+                'optimism': '#CDDC39',
+                'Awe': '#673AB7',
+                'awe': '#673AB7',
+                'Disappointment': '#607D8B',
+                'disappointment': '#607D8B',
+                'Remorse': '#3F51B5',
+                'remorse': '#3F51B5',
+                'Contempt': '#8BC34A',
+                'contempt': '#8BC34A',
+                'Calmness': '#009688',
+                'calmness': '#009688',
+                'Excitement': '#FF5722',
+                'excitement': '#FF5722',
+                'Interest': '#03A9F4',
+                'interest': '#03A9F4',
+                'Gratitude': '#8BC34A',
+                'gratitude': '#8BC34A',
+                'Pride': '#FFC107',
+                'pride': '#FFC107',
+                'Anxiety': '#9E9E9E',
+                'anxiety': '#9E9E9E'
+            };
+            return colors[mood] || '#FFFFFF';
+        }
+    </script>
+</body>
+</html>

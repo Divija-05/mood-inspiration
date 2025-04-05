@@ -1,0 +1,57 @@
+{
+    "joy": [
+        {"title": "Share Your Joy", "description": "Call a friend or family member and share your happiness with them."},
+        {"title": "Random Act of Kindness", "description": "Do something nice for a stranger today to spread your positive energy."},
+        {"title": "Gratitude Journal", "description": "Write down three things you're grateful for to maintain this positive feeling."}
+    ],
+    "sadness": [
+        {"title": "Self-Care Time", "description": "Take a warm bath or shower and focus on physical comfort."},
+        {"title": "Nature Walk", "description": "Spend 15 minutes outside in nature to lift your spirits."},
+        {"title": "Creative Expression", "description": "Draw, write, or play music to express and process your feelings."}
+    ],
+    "fear": [
+        {"title": "Deep Breathing", "description": "Practice 4-7-8 breathing: inhale for 4, hold for 7, exhale for 8 seconds."},
+        {"title": "Face a Small Fear", "description": "Do one small thing today that scares you to build confidence."},
+        {"title": "Visualization", "description": "Spend 5 minutes imagining yourself successfully handling what you fear."}
+    ],
+    "anger": [
+        {"title": "Physical Release", "description": "Go for a run or do some push-ups to release the tension."},
+        {"title": "Mindful Pause", "description": "Count to 10 slowly before responding to what's making you angry."},
+        {"title": "Write It Out", "description": "Write an unsent letter expressing your feelings without filter."}
+    ],
+    "disgust": [
+        {"title": "Clean Space", "description": "Tidy up your environment to create a sense of order and freshness."},
+        {"title": "Sensory Reset", "description": "Smell something pleasant like essential oils or fresh air."},
+        {"title": "Perspective Shift", "description": "List three positive aspects of something you find unpleasant."}
+    ],
+    "surprise": [
+        {"title": "Embrace Spontaneity", "description": "Do something unplanned today that breaks your routine."},
+        {"title": "Learn Something New", "description": "Spend 15 minutes researching a topic you know nothing about."},
+        {"title": "Mystery Activity", "description": "Ask a friend to plan a small activity for you without telling you what it is."}
+    ],
+    "anticipation": [
+        {"title": "Plan Something Fun", "description": "Schedule an activity you'll look forward to in the coming days."},
+        {"title": "Vision Board", "description": "Create a visual representation of things you're looking forward to."},
+        {"title": "Countdown Timer", "description": "Set a timer for something you're excited about and check it regularly."}
+    ],
+    "trust": [
+        {"title": "Trust Exercise", "description": "Delegate a task to someone else without micromanaging them."},
+        {"title": "Reflect on Trust", "description": "Write down three people you trust completely and why you trust them."},
+        {"title": "Trust Yourself", "description": "Make a decision you've been postponing and commit to it."}
+    ],
+    "love": [
+        {"title": "Express Affection", "description": "Tell someone you care about exactly what you appreciate about them."},
+        {"title": "Self-Love Ritual", "description": "Do something kind for yourself that you normally wouldn't make time for."},
+        {"title": "Love Letter", "description": "Write a letter (to send or keep) expressing your feelings for someone special."}
+    ],
+    "optimism": [
+        {"title": "Future Journaling", "description": "Write about your ideal future as if it's already happening."},
+        {"title": "Opportunity Finder", "description": "Identify three opportunities in a current challenge you're facing."},
+        {"title": "Positive News", "description": "Seek out and read three positive news stories today."}
+    ],
+    "anxiety": [
+        {"title": "Grounding Exercise", "description": "Practice the 5-4-3-2-1 technique: name 5 things you see, 4 you feel, 3 you hear, 2 you smell, and 1 you taste."},
+        {"title": "Worry Time", "description": "Schedule a specific 15-minute period to focus on your worries, then let them go outside that time."},
+        {"title": "Progressive Muscle Relaxation", "description": "Tense and then release each muscle group in your body, starting from your toes and working upward."}
+    ]
+}
