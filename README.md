@@ -15,11 +15,7 @@ A personal project that generates inspirational mood-based quotes using the Open
 - HTML/CSS
 - Docker + Kubernetes
 
-## 📦 Setup
-
-
-1. GitHub Setup
-
+## GitHub Setup
 
 Step 1: Create a public/private GitHub repository 
 
@@ -42,8 +38,7 @@ echo "venv/" >> .gitignore
 echo "\_\_pycache\_\_/" >> .gitignore
 
 
-
-2. Setting up Docker and Kubernetes
+## Setting up Docker and Kubernetes
 Docker
 Installing docker and running
 
@@ -59,8 +54,7 @@ Set kubectl to use minikube : kubectl config use-context minikube
 Verify Kubernetes is working: kubectl get nodes
 
 
-
-3. Deployment
+## Deployment
 
 Step 1: Building docker image
 touch Dockerfile
@@ -102,7 +96,7 @@ kubectl apply -f secret.yaml
 
 
 
-3. Auto Scaling
+## Auto Scaling
 Step 1: Creating the metrics-server.yaml
 
 Step 2: Checking metrics server status
@@ -114,7 +108,7 @@ kubectl get hpa
 
 
 
-4. Rolling updates and rollback
+## Rolling updates and rollback
 Step 1: Check current deployment
 kubectl get deployment mood-inspiration-deployment -o yaml | grep image
 - image: mood-inspiration-app
@@ -138,7 +132,7 @@ kubectl rollout history deployment mood-inspiration-deployment
 
 
 
-5. Logging
+## Logging
 Step 1: Monitoring the pods
 kubectl get pods
 
@@ -150,7 +144,7 @@ kubectl logs -f mood-inspiration-deployment-8648967fbb-4kx79
 
 
 
-6. Test Scenarios
+## Test Scenarios
 
 1. Application Availability Tests
 Test: Check if the application is accessible via the Kubernetes service. 
